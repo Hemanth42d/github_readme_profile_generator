@@ -1,6 +1,6 @@
 import Footer from "./components/Footer";
-import MainComponentLayout from "./components/MainComponent/MainComponentLayout";
 import Navbar from "./components/Navbar";
+import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
@@ -9,8 +9,8 @@ const Layout = () => {
         <div className="max-h-[10%]">
           <Navbar />
         </div>
-        <div className="max-h-[78%] p-3">
-          <MainComponentLayout />
+        <div className="max-h-[88%] p-3">
+          <Outlet />
         </div>
         <div className="max-h-[10%] fixed bottom-5 w-[90%]">
           <Footer />

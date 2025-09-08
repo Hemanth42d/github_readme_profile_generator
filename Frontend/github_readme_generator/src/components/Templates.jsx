@@ -1,4 +1,8 @@
-const Templates = () => {
+import { useNavigate } from "react-router-dom";
+import Button from "./Button/Button";
+
+const Templates = ({ display, generate }) => {
+  const navigate = useNavigate();
   const templateData = [
     {
       id: 1,
@@ -22,10 +26,15 @@ const Templates = () => {
     },
   ];
 
+  const handleOnSubmit = () => {
+    console.log("Proceed to next step...");
+    navigate("/copy-readme");
+  };
+
   return (
     <>
       <div className="bg-gray-900 p-3 rounded-lg my-3">
-        <div>Choose Templates</div>
+        <div>{display || "Preview"} Template</div>
         <div className="grid grid-cols-2 gap-3 mt-5">
           {templateData.map((template) => {
             return (
@@ -38,6 +47,11 @@ const Templates = () => {
             );
           })}
         </div>
+      </div>
+      <div>
+        {generate && (
+          <Button value={"Generete Readme"} handleOnSubmit={handleOnSubmit} />
+        )}
       </div>
     </>
   );
