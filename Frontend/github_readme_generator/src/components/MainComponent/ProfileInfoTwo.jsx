@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 import InputComponent from "../Inputs/InputComponent";
+import { useUserData } from "../../context/UserDataContext";
 
 const ProfileInfoTwo = () => {
   const navigate = useNavigate();
+
+  const { userData, updateField } = useUserData();
 
   const handleOnSubmit = () => {
     console.log("Procced to next step...");
@@ -20,38 +23,43 @@ const ProfileInfoTwo = () => {
         <div className="my-2 py-2">
           <label htmlFor="leetcode">LeetCode Url : </label>
           <InputComponent
+            id={"leetcode"}
             type={"text"}
             placeholder={"Leetcode url...."}
-            value={""}
-            id={"leetcode"}
+            value={userData.leetcode || ""}
+            onChange={(value) => updateField("leetcode", value)}
           />
           <label htmlFor="twitter">X Url : </label>
           <InputComponent
+            id={"twitter"}
             type={"text"}
             placeholder={"x (twitter) url...."}
-            value={""}
-            id={"twitter"}
+            value={userData.twitter || ""}
+            onChange={(value) => updateField("twitter", value)}
           />
           <label htmlFor="youtube">Youtube Url : </label>
           <InputComponent
+            id={"Youtube"}
             type={"text"}
-            placeholder={"youtube url...."}
-            value={""}
-            id={"youtube"}
+            placeholder={"Youtube url...."}
+            value={userData.Youtube || ""}
+            onChange={(value) => updateField("Youtube", value)}
           />
           <label htmlFor="dribble">Dribble Url : </label>
           <InputComponent
+            id={"Dribble"}
             type={"text"}
             placeholder={"Dribble url...."}
-            value={""}
-            id={"dribble"}
+            value={userData.Dribble || ""}
+            onChange={(value) => updateField("Dribble", value)}
           />
           <label htmlFor="devTo">Dev To Url : </label>
           <InputComponent
-            type={"text"}
-            placeholder={"devTo url...."}
-            value={""}
             id={"devTo"}
+            type={"text"}
+            placeholder={"Dev To url...."}
+            value={userData.devTo || ""}
+            onChange={(value) => updateField("devTo", value)}
           />
           <Button value={"Next"} handleOnSubmit={handleOnSubmit} />
         </div>

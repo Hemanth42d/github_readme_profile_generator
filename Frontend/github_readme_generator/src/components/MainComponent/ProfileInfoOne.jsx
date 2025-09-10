@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 import InputComponent from "../Inputs/InputComponent";
+import { useUserData } from "../../context/UserDataContext";
 
 const ProfileInfoOne = () => {
   const navigate = useNavigate();
+  const { userData, updateField } = useUserData();
 
   const handleOnSubmit = () => {
     console.log("Proceed to next step....");
@@ -25,7 +27,8 @@ const ProfileInfoOne = () => {
             id={"fullName"}
             type={"text"}
             placeholder={"Enter Your Full Name"}
-            value={""}
+            value={userData.fullName || ""}
+            onChange={(value) => updateField("fullName", value)}
           />
           <label htmlFor="iAm" className="py-2">
             I am a :{" "}
@@ -34,7 +37,8 @@ const ProfileInfoOne = () => {
             id={"iAm"}
             type={"text"}
             placeholder={"I am .... (ex : student, Employee etc... ) "}
-            value={""}
+            value={userData.iAm || ""}
+            onChange={(value) => updateField("iAm", value)}
           />
           <label htmlFor="workingOn" className="py-2">
             currently Working On :{" "}
@@ -43,7 +47,8 @@ const ProfileInfoOne = () => {
             id={"working"}
             type={"text"}
             placeholder={"Currently Working on.."}
-            value={""}
+            value={userData.working || ""}
+            onChange={(value) => updateField("working", value)}
           />
 
           <Button value={"Next"} handleOnSubmit={handleOnSubmit} />

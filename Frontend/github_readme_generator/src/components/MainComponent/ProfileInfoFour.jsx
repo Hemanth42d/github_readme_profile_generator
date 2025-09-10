@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 import InputComponent from "../Inputs/InputComponent";
+import { useUserData } from "../../context/UserDataContext";
 
 const ProfileInfoFour = () => {
   const navigate = useNavigate();
+
+  const { userData, updateField } = useUserData();
+
   const handleOnSubmit = () => {
     console.log("Generate Readme...");
     navigate("/choose-template");
@@ -18,10 +22,11 @@ const ProfileInfoFour = () => {
         <div className="my-2 py-2">
           <label htmlFor="search">Tech Stack You Worked On : </label>
           <InputComponent
-            type={"text"}
-            value={""}
-            placeholder={"Add Tech Stack you Worked on"}
             id={"search"}
+            type={"text"}
+            placeholder={"Add Tech Stack you Worked on"}
+            value={userData.techStack || ""}
+            onChange={(value) => updateField("search", value)}
           />
           <Button value={"Add"} handleOnSubmit={handleOnSubmit} />
         </div>

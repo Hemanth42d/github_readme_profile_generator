@@ -7,10 +7,11 @@ import ProfileInfoThree from "./components/MainComponent/ProfileInfoThree";
 import ProfileInfoFour from "./components/MainComponent/ProfileInfoFour";
 import Templates from "./components/Templates";
 import CopyReadme from "./components/MainComponent/CopyReadme";
+import { UserDataProvider } from "./context/UserDataContext";
 
 function App() {
   return (
-    <>
+    <UserDataProvider>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainLandPage />} />
@@ -25,7 +26,7 @@ function App() {
           <Route path="copy-readme" element={<CopyReadme />} />
         </Route>
       </Routes>
-    </>
+    </UserDataProvider>
   );
 }
 
